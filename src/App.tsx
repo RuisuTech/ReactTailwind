@@ -4,6 +4,9 @@ import Home from "./views/Home";
 import NotFound from "./views/NotFound";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import { Provider } from "react-redux";
+import Store from "./index.tsx";
+
 function App() {
   const browserRouter = createBrowserRouter([
     { path: "/", element: <Home /> },
@@ -13,7 +16,9 @@ function App() {
   ]);
   return (
     <>
-      <RouterProvider router={browserRouter} />
+      <Provider store={Store}>
+        <RouterProvider router={browserRouter} />
+      </Provider>
     </>
   );
 }
