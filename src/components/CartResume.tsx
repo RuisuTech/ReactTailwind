@@ -1,9 +1,12 @@
+import { useSelector } from "react-redux";
+
 
 interface CartResumeProps{
   price:number;
 }
 
 function CartResume(props:CartResumeProps) {
+  const total = useSelector((store) => store.products.total);
   const { price } = props
   const formatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,
