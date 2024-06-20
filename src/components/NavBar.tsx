@@ -1,13 +1,16 @@
 // import styles from "./NavBar.module.css";
 import NavButton from "./NavButton";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { captureText } from "../actions/products";
 
 export default function NavBar() {
+  const location = useLocation();
+  const pathname = location.pathname;
   const text = useRef();
   const dispatch = useDispatch();
+  const textStore = useSelector((store) => store.products.text);
   const setText = () => {
     dispatch(
       captureText({
